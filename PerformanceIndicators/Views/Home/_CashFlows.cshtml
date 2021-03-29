@@ -1,0 +1,15 @@
+﻿@model PerformanceIndicators.Models.CashFlowViewModel[]
+
+<p>Грошові потоки</p>
+
+@for (int i = 0; i < Model.Length; i++)
+{
+    <div style="display:inline-block; text-align: center">
+        @(i + 1)
+        <br />
+        <input type="text" asp-for="@Model[i].Sum" name="@("CashFlows["+ i.ToString() +"].Sum")" value="@Model[i]?.Sum"
+         class="form-control" style="width: 100px"/>
+
+        <input type="hidden" asp-for="@Model[i].Month" name="@("CashFlows["+ i.ToString() +"].Month")" value="@(i + 1)"/>
+    </div>
+}

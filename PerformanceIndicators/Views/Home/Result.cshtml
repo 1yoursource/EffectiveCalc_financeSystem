@@ -1,0 +1,27 @@
+﻿@model PerformanceIndicators.Models.ResultViewModel
+
+@{
+    ViewData["Title"] = "Результати";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <img src="~/img/npv.jpg" alt="npv" />
+    <br />
+    <p id="npv" style="font-weight:bold; font-size:x-large">
+        NPV = @Math.Round(Model.Npv, 2)
+    </p>
+</div>
+
+<div>
+    <img src="~/img/pi.jpg" alt="pi" />
+    <br />
+    <p id="pi" style="font-weight:bold; font-size:x-large">
+        PI = @Math.Round(Model.Pi, 2)
+    </p>
+</div>
+
+<div>
+    <a class="btn btn-primary" href="@Url.Action("Index")">Назад</a>
+</div>

@@ -1,0 +1,46 @@
+﻿@model PerformanceIndicators.Models.ProjectViewModel
+
+@{
+    ViewData["Title"] = "Показники ефективності";
+}
+
+<h1>@ViewData["Title"]</h1>
+<img src="~/img/npv.jpg" alt="npv" />
+<br />
+<img src="~/img/pi.jpg" alt="pi" />
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @class = "form-group" }))
+{
+    <p>
+        @Html.LabelFor(p => p.Name) <br />
+        @Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+    </p>
+    <p>
+        @Html.LabelFor(p => p.Duration) <br />
+        @Html.TextBoxFor(p => p.Duration, new { @class = "form-control" })
+    </p>
+    <p>
+        @Html.LabelFor(p => p.DiscountRate) <br />
+        @Html.TextBoxFor(p => p.DiscountRate, new { @class = "form-control" })
+    </p>
+    <p>
+        @Html.LabelFor(p => p.Investments) <br />
+        @Html.TextBoxFor(p => p.Investments, new { @class = "form-control" })
+    </p>
+
+    @if (Model.CashFlows != null)
+    {
+        <div>
+            @Html.Partial("_CashFlows", Model.CashFlows)
+        </div>
+    }
+    <br />
+    <p>
+        <input class="btn btn-primary" style="clear:both" type="submit" value="Зберегти" />
+        @if (Model.CashFlows != null)
+        {
+            <input class="btn btn-primary" id="calculateBtn" style="clear:both" type="submit" value="Розрахувати"
+                   formaction="@Url.Action("Result")" />
+        }
+    </p>
+
+}
